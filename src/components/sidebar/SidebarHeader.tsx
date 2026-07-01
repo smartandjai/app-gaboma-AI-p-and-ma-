@@ -1,0 +1,152 @@
+/**
+ * GabomaAI · SidebarHeader (Zone 1)
+ * SmartANDJ AI Technologies
+ * Logo + collapse toggle — ALWAYS on the same row
+ */
+
+'use client';
+
+import Image from 'next/image';
+import {
+  IconLayoutSidebarLeftCollapse,
+  IconLayoutSidebarLeftExpand,
+  IconX,
+} from '@tabler/icons-react';
+import { useIsMobile } from '@/hooks/useIsMobile';
+import styles from './sidebar.module.css';
+
+interface SidebarHeaderProps {
+  isCollapsed: boolean;
+  onToggleCollapse: () => void;
+  onClose: () => void;
+}
+
+export default function SidebarHeader({
+  isCollapsed,
+  onToggleCollapse,
+  onClose,
+}: SidebarHeaderProps) {
+  const isMobile = useIsMobile();
+
+  return (
+    <div
+      className={styles.sidebarHeader}
+      style={{
+        height: 56,
+        padding: '6px 8px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexShrink: 0,
+      }}
+    >
+      {/* Left: Logo + Name */}
+      {!isCollapsed && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          {!isMobile && (
+            <Image
+              src="/gaboma-ai-svg-icone.svg"
+              alt=""
+              width={22}
+              height={22}
+              aria-hidden
+              style={{ flexShrink: 0 }}
+            />
+          )}
+          <span
+            className={styles.sidebarLabel}
+            style={{
+              fontSize: 15,
+              fontWeight: 500,
+              color: 'var(--text-primary)',
+              letterSpacing: '-0.01em',
+              fontFamily: 'var(--font-heading)',
+            }}
+          >
+            Gaboma
+          </span>
+        </div>
+      )}
+
+      {/* Collapsed: just the logo icon centered */}
+      {isCollapsed && !isMobile && (
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+          <Image
+            src="/gaboma-ai-svg-icone.svg"
+            alt="Gaboma AI"
+            width={22}
+            height={22}
+          />
+        </div>
+      )}
+
+      {/* Right: Toggle / Close */}
+      {!isCollapsed && (
+        <button
+          type="button"
+          onClick={isMobile ? onClose : onToggleCollapse}
+          aria-expanded={!isCollapsed}
+          aria-label={isMobile ? 'Fermer la barre latérale' : 'Réduire la barre latérale'}
+          style={{
+            padding: 4,
+            borderRadius: 6,
+            border: 'none',
+            background: 'none',
+            color: 'var(--text-secondary)',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            transition: 'color 150ms ease, background 150ms ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'var(--accent-06)';
+            e.currentTarget.style.color = 'var(--text-primary)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'none';
+            e.currentTarget.style.color = 'var(--text-secondary)';
+          }}
+        >
+          {isMobile
+            ? <IconX size={18} stroke={1.5} />
+            : <IconLayoutSidebarLeftCollapse size={18} stroke={1.5} />
+          }
+        </button>
+      )}
+
+      {/* Collapsed: expand button below logo */}
+      {isCollapsed && !isMobile && (
+        <button
+          type="button"
+          onClick={onToggleCollapse}
+          aria-expanded={false}
+          aria-label="Ouvrir la barre latérale"
+          style={{
+            position: 'absolute',
+            top: 56 + 4,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            padding: 4,
+            borderRadius: 6,
+            border: 'none',
+            background: 'none',
+            color: 'var(--text-secondary)',
+            cursor: 'pointer',
+            display: 'flex',
+            transition: 'color 150ms ease, background 150ms ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'var(--accent-06)';
+            e.currentTarget.style.color = 'var(--text-primary)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'none';
+            e.currentTarget.style.color = 'var(--text-secondary)';
+          }}
+        >
+          <IconLayoutSidebarLeftExpand size={18} stroke={1.5} />
+        </button>
+      )}
+    </div>
+  );
+}
