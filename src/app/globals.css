@@ -4,9 +4,9 @@
  * 6 thèmes · Tailwind v4 · CSS variables sémantiques
  */
 
-@import "tailwindcss";
-
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@import "tailwindcss";
 
 /* ════════════════════════════════════════════
    INVARIANT TOKENS (shared across all themes)

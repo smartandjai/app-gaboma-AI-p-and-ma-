@@ -11,16 +11,11 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: '*.gabomagpt.ga' },
     ],
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
   experimental: {
-    dynamicIO: true,
-    ppr: 'incremental',
-    reactCompiler: true,
+    cacheComponents: true,
   },
 };
 
