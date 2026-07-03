@@ -10,7 +10,7 @@ interface GabomaAILogoProps {
 
 export const GabomaAILogo = ({ width = 24, height = 24, className, style }: GabomaAILogoProps) => (
   <img
-    src="/gaboma-ai-svg-icone.svg"
+    src="/vrai-içone-pro-gaboma-ai2026.png"
     alt="Gaboma AI"
     width={width}
     height={height}

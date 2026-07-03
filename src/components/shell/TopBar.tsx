@@ -46,18 +46,11 @@ export default function TopBar() {
               transition={{ duration: 0.15 }}
               className="flex items-center gap-2"
             >
-              <Image
-                src="/gaboma-ai-svg-icone.svg"
-                alt="Gaboma AI"
-                width={22}
-                height={22}
-                className="rounded-md"
-              />
               <span
                 className="text-[14px] font-semibold text-[var(--text-primary)] hidden sm:inline"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                Gaboma
+                Gaboma AI
               </span>
             </motion.div>
           )}

@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  experimental: {
+    dynamicIO: true,
+    ppr: 'incremental',
+    reactCompiler: true,
+  },
 };
 
 export default nextConfig;

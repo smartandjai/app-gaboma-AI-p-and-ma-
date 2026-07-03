@@ -45,7 +45,7 @@ export default function SidebarHeader({
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           {!isMobile && (
             <Image
-              src="/gaboma-ai-svg-icone.svg"
+              src="/vrai-içone-pro-gaboma-ai2026.png"
               alt=""
               width={22}
               height={22}
@@ -56,23 +56,23 @@ export default function SidebarHeader({
           <span
             className={styles.sidebarLabel}
             style={{
-              fontSize: 15,
-              fontWeight: 500,
+              fontSize: 16,
+              fontWeight: 700,
               color: 'var(--text-primary)',
-              letterSpacing: '-0.01em',
+              letterSpacing: '-0.02em',
               fontFamily: 'var(--font-heading)',
             }}
           >
-            Gaboma
+            Gaboma AI
           </span>
         </div>
       )}
 
-      {/* Collapsed: just the logo icon centered */}
+      {/* Collapsed: Logo sur PC, lettre "G" sur mobile si applicable */}
       {isCollapsed && !isMobile && (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
           <Image
-            src="/gaboma-ai-svg-icone.svg"
+            src="/vrai-içone-pro-gaboma-ai2026.png"
             alt="Gaboma AI"
             width={22}
             height={22}

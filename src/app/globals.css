@@ -295,3 +295,295 @@ code, pre, kbd, samp {
 .text-info { color: var(--color-info); }
 
 .gb-live-pulse { animation: pulse-luxe 2.4s ease-out infinite; }
+
+/* ════════════════════════════════════════════
+   PREMIUM 2026 — Glassmorphism 2.0 + Micro-Animations
+   ════════════════════════════════════════════ */
+
+/* ── Glassmorphism 2.0 (layered depth) ── */
+
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(48px) saturate(220%);
+  -webkit-backdrop-filter: blur(48px) saturate(220%);
+  border: 0.5px solid var(--glass-border);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.1),
+    0 8px 32px -4px rgba(0, 0, 0, 0.3);
+}
+
+.glass-elevated {
+  background: var(--bg-glass);
+  backdrop-filter: blur(64px) saturate(240%);
+  -webkit-backdrop-filter: blur(64px) saturate(240%);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
+    0 16px 48px -8px rgba(0, 0, 0, 0.4),
+    0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 0.5px solid rgba(255, 255, 255, 0.04);
+}
+
+/* ── Split-View Layout ── */
+
+.split-view {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .split-view {
+    grid-template-columns: 1fr 380px;
+  }
+  .split-view.agent-active {
+    grid-template-columns: 1fr 420px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .split-view {
+    grid-template-columns: 1fr 460px;
+  }
+  .split-view.agent-active {
+    grid-template-columns: 1fr 520px;
+  }
+}
+
+/* ── Agent Panel ── */
+
+.agent-panel {
+  border-left: 0.5px solid var(--border);
+  background: var(--bg-glass);
+  backdrop-filter: blur(40px) saturate(200%);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.agent-panel-header {
+  padding: 12px 16px;
+  border-bottom: 0.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* ── Mode Indicator Chip ── */
+
+.mode-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  letter-spacing: 0.01em;
+  transition: all var(--transition-base);
+}
+
+.mode-chip[data-mode="planning"] {
+  background: rgba(156, 39, 176, 0.12);
+  color: #CE93D8;
+}
+.mode-chip[data-mode="standard"] {
+  background: var(--accent-10);
+  color: var(--accent);
+}
+.mode-chip[data-mode="edit"] {
+  background: rgba(33, 150, 243, 0.12);
+  color: #90CAF9;
+}
+
+/* ── Tool Call Card ── */
+
+.tool-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.tool-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--accent-20);
+}
+
+.tool-card[data-status="running"] {
+  border-left: 2px solid var(--accent);
+}
+.tool-card[data-status="success"] {
+  border-left: 2px solid var(--color-success);
+}
+.tool-card[data-status="error"] {
+  border-left: 2px solid var(--color-error);
+}
+
+/* ── Generative UI Artifact ── */
+
+.artifact-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transition: all var(--transition-base);
+}
+
+.artifact-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  border-color: var(--accent-20);
+  transform: translateY(-1px);
+}
+
+.artifact-card .artifact-header {
+  padding: 10px 14px;
+  border-bottom: 0.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.artifact-card .artifact-body {
+  padding: 16px;
+}
+
+/* ── Task Checklist (Manus-style) ── */
+
+.task-checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 4px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.task-checklist-item[data-status="done"] {
+  color: var(--text-tertiary);
+  text-decoration: line-through;
+}
+.task-checklist-item[data-status="active"] {
+  color: var(--text-primary);
+}
+
+/* ── Takeover Button ── */
+
+.takeover-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(224, 88, 75, 0.12);
+  color: #EF9A9A;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.takeover-btn:hover {
+  background: rgba(224, 88, 75, 0.2);
+  transform: scale(1.02);
+}
+
+/* ── Micro-animations ── */
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes tool-progress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 30%, var(--accent-10) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+.animate-breathe { animation: breathe 3s ease-in-out infinite; }
+.animate-slide-in-right { animation: slide-in-right 0.3s ease-out; }
+.animate-scale-in { animation: scale-in 0.2s ease-out; }
+
+/* ── Verification Badge ── */
+
+.verification-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 10px;
+  font-weight: 600;
+}
+.verification-badge[data-verified="true"] {
+  background: rgba(31, 157, 107, 0.12);
+  color: var(--color-success);
+}
+.verification-badge[data-verified="false"] {
+  background: rgba(217, 142, 59, 0.12);
+  color: var(--color-warning);
+}
+
+/* ── Progressive Disclosure ── */
+
+.disclosure {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.2s ease;
+}
+.disclosure[data-open="false"] {
+  max-height: 0;
+  opacity: 0;
+}
+.disclosure[data-open="true"] {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* ── Focus States (Accessibility) ── */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
